@@ -29,7 +29,7 @@ interface GeoPoint {
 For now, I'll say a `Geometry` is always a valid GeoJSON string. (Encoded as a
 string, not an object).
 ```ts
-type Geometry: string
+type Geometry = string;
 ```
 
 ### Town
@@ -44,6 +44,8 @@ interface Town {
     id: number,
     // Common name for town
     name: string,
+    // Type of town
+    townType: TownType,
     // Geographic centroid of town. I think this probably is meant to be more of
     // a "representative point" in Shapely's parlance. A centroid may be outside
     // of a polygon; it would be nice if the centroid argument is always within
@@ -54,6 +56,10 @@ interface Town {
     geometry: Geometry,
     // trails that this Town is a part of. I.e. [PCT]
     trails: string[],
+}
+enum TownType {
+    City
+    Resort
 }
 ```
 
@@ -75,27 +81,44 @@ interface TownWaypoint {
     // Optionally, more accurate waypoint
     geometry?: Geometry
     // object that holds OSM information
-    osm: TownOSM,
+    osm: TownWaypointOSM,
     // attributes that are not pinned to OSM
-    attributes: TownAttributes,
+    attributes: TownWaypointAttributes,
 }
 // TODO figure out waypoint type and subtype
 enum TownWaypointType {
     Food,
     Lodging,
+    Finance,
+    Store,
+    Medical,
+    ...
+}
+type TownWaypointSubtype = FoodSubtype || LodgingSubtype || FinanceSubtype || StoreSubtype || MedicalSubtype;
+enum FoodSubtype {
+    FastFood,
+    Cafe,
+    Restaurant,
+    Bar,
+}
+enum LodgingSubtype {
+    Hotel,
+    Motel,
     Camping,
-    ...
 }
-enum TownWaypointSubtype {
-    FastFood
-    Restaurant
-    Bar
-    Hotel
-    Motel
-    Camping
-    ...
+enum FinanceSubtype {
+    ATM,
+    Bank,
 }
-interface TownOSM {
+enum StoreSubtype {
+    OutdoorsStore,
+    Grocery,
+}
+enum MedicalSubtype {
+    Hospital,
+    Pharmacy
+}
+interface TownWaypointOSM {
     nodeId?: number,
     wayId?: number,
     relationId?: number,
@@ -114,7 +137,7 @@ interface TownOSM {
     toilets_disposal?: string,
     drinking_water?: boolean,
 }
-interface TownAttributes {
+interface TownWaypointAttributes {
     wifi?: boolean,
     phone?: string,
     website?: string,
@@ -126,6 +149,31 @@ interface TownAttributes {
     laundryFee?: string,
     toilets?: boolean,
     toiletsFlush?: boolean,
+    acceptsResupply?: boolean
+    acceptsResupplyFee?: string,
+    acceptsResupplyProvider?: ResupplyProvider,
+    acceptsResupplyAddress?: ResupplyAddress[],
+    sendsResupply?: boolean,
+    sendsResupplyProvider?: ResupplyProvider,
+}
+interface ResupplyProvider {
+    ups?: boolean,
+    usps?: boolean,
+    fedex?: boolean,
+}
+interface ResupplyAddress {
+    // either ups, usps, fedex
+    provider: string[],
+    address: Address,
+}
+interface Address {
+    housenumber?: string,
+    // comparable to address line 2
+    flats?: string,
+    street?: string,
+    postcode?: string,
+    city?: string,
+    state?: string,
 }
 ```
 
