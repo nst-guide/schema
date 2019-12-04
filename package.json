@@ -10,12 +10,14 @@
     "ajv": "^6.10.2"
   },
   "devDependencies": {
+    "glob": "^7.1.6",
     "husky": "^3.1.0",
+    "jest": "^24.9.0",
     "prettier": "1.19.1",
     "pretty-quick": "^2.0.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -31,5 +33,15 @@
     "hooks": {
       "pre-commit": "pretty-quick --staged"
     }
+  },
+  "jest": {
+    "testRegex": "./tests/.*.js$",
+    "rootDir": ".",
+    "roots": [
+      "."
+    ],
+    "modulePaths": [
+      "."
+    ]
   }
 }
