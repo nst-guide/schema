@@ -1,0 +1,13 @@
+{
+  "id": 1,
+  "name": "Agua Dulce",
+  "townType": "city",
+  "centroid": {
+    "__type": "GeoPoint",
+    "latitude": 34.4963809,
+    "longitude": -118.334411
+  },
+  "trails": ["pct"],
+  "feedback": [],
+  "elevation": 770
+}
