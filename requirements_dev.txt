@@ -1,0 +1,6 @@
+bump2version
+pip
+pytest-runner
+pytest
+twine
+wheel
