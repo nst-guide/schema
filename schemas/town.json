@@ -1,0 +1,113 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$id": "https://nst.guide/schemas/town.json",
+  "type": "object",
+  "title": "Town schema",
+  "required": [
+    "id",
+    "name",
+    "townType",
+    "centroid",
+    "trails",
+    "feedback",
+    "elevation"
+  ],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier for town"
+    },
+    "name": {
+      "type": "string",
+      "description": "Common name for town"
+    },
+    "townType": {
+      "$ref": "#/definitions/TownType"
+    },
+    "centroid": {
+      "$ref": "#/definitions/GeoPoint"
+    },
+    "geometry": {
+      "type": "string"
+    },
+    "trails": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "feedback": {
+      "$ref": "#/definitions/TownFeedback"
+    },
+    "elevation": {
+      "description": "Elevation in meters of town centroid. Min/max are of continental US",
+      "type": "number",
+      "minimum": -87,
+      "maximum": 4500
+    }
+  },
+  "definitions": {
+    "TownType": {
+      "type": "string",
+      "enum": [
+        "city",
+        "resort"
+      ]
+    },
+    "GeoPoint": {
+      "type": "object",
+      "required": [
+        "latitude",
+        "longitude"
+      ],
+      "properties": {
+        "__type": {
+          "type": "string",
+          "enum": [
+            "GeoPoint"
+          ]
+        },
+        "latitude": {
+          "type": "number",
+          "description": "Min/Max are bbox of US (all 50 states)",
+          "minimum": 18.91619,
+          "maximum": 71.3577635769
+        },
+        "longitude": {
+          "type": "number",
+          "description": "Min/Max are bbox of US (all 50 states)",
+          "minimum": -171.791110603,
+          "maximum": -66.96466
+        }
+      }
+    },
+    "TownFeedback": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Comment"
+      }
+    },
+    "Comment": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        },
+        "direction": {
+          "description": "direction of travel. true means 'northbound' where northbound is usually defined as south to north, but could be defined as the 'standard' way for an east-west facing trail, like the Colorado Trail",
+          "type": "boolean"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}

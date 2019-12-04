@@ -51,6 +51,7 @@ interface DefaultFeedback {
 }
 interface Comment {
     userId: string,
+    userName: string,
     body: string,
     // true == "northbound", where northbound is usually defined as south to
     // north, but could be defined as the "standard" way for an east-west facing
@@ -81,14 +82,16 @@ interface Town {
     centroid: GeoPoint,
     // Actual geometry of town. While centroid may be used when zoomed out,
     // geometry should be a more accurate geometric representation of the town.
-    geometry: Geometry,
+    geometry?: Geometry,
     // trails that this Town is a part of. I.e. [PCT]
     trails: string[],
     feedback: TownFeedback,
+    // associate elevation with the town in general instead of with individual town waypoints for simplicity
+    elevation: number,
 }
 enum TownType {
-    City
-    Resort
+    city
+    resort
 }
 interface TownFeedback {
     comments: Comments[]
