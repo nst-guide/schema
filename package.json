@@ -1,12 +1,26 @@
 {
-  "name": "table-schemas",
+  "name": "@nst-guide/schema",
   "version": "0.1.0",
-  "description": "JSON Schemas for Parse tables",
+  "description": "This repository holds JSON Schemas to validate each of the tables of the project.",
   "main": "index.js",
-  "repository": "https://github.com/nst-guide/schema",
-  "author": "Kyle Barron <kylebarron2@gmail.com>",
-  "license": "MIT",
+  "directories": {
+    "test": "tests"
+  },
   "dependencies": {
     "ajv": "^6.10.2"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nst-guide/schema.git"
+  },
+  "author": "Kyle Barron <kylebarron2@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nst-guide/schema/issues"
+  },
+  "homepage": "https://github.com/nst-guide/schema"
 }
