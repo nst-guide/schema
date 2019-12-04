@@ -16,6 +16,22 @@ and just automatically redownload if available during the syncing process.
 
 This is a work in progress!
 
+## Installation
+
+```
+pip install git+https://github.com/nst-guide/schema --upgrade
+```
+
+## Usage
+
+```py
+from nstschema import validate
+town = {
+    'name': 'town name'
+}
+validate(town, 'Town')
+```
+
 ## Tables
 
 Below is pseudocode/TypeScript for the schemas. Actual parsing happens in the
