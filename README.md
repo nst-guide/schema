@@ -5,6 +5,15 @@ This repository holds JSON Schemas to validate each of the tables of the project
 The idea is that with small wrappers written in JS and Python, this can be an
 importable package that is used any time data is being updated.
 
+This schema is for all data that will be held in the Parse Server/MongoDB
+database. Not all data will be held here: rather, only data that is expected to
+have frequent updates _and_ have two-way synchronization.
+
+For example, a weather forecast layer does not need to be in here, because the
+data is always going from server to client, and old data can be deleted. It
+should be simple enough for this kind of data to check timestamps on the server,
+and just automatically redownload if available during the syncing process.
+
 This is a work in progress!
 
 ## Tables
@@ -212,14 +221,52 @@ interface TrailWaypoint {
     id: number,
     name?: string,
     desc?: string,
-    type: TrailWaypointType
-    subtype: TrailWaypointSubtype
+    type: TrailWaypointType,
+    subtype: TrailWaypointSubtype,
 }
 enum TrailWaypointType {
-
+    Water,
+    Camp,
+    Natural,
+    // transportation
+    Trans,
+    // TODO: Not sure if these should be here
+    Toilet,
+    Shower,
 }
-enum TrailWaypointSubtype {
-
+type TrailWaypointSubtype = WaterSubtype || CampSubtype || NaturalSubtype || TransSubtype;
+enum WaterSubtype {
+    // Natural LineString water source
+    Stream,
+    // Natural polygon water source
+    Lake,
+    // Natural point water source
+    Spring,
+    // non-natural water source that must be refilled.
+    Cache,
+    // an always?-running man-made water source. Doesn't need to be refilled,
+    // but may sometimes be turned off.
+    Faucet
+}
+enum CampSubtype {
+    // wilderness campsite
+    campsite,
+    // designated campground with multiple sites
+    campground,
+    // fully enclosed shelter
+    enclosedShelter,
+    // shelter that is not fully enclosed
+    unenclosedShelter,
+}
+enum NaturalSubtype {
+    Pass,
+    Peak,
+}
+enum TransSubtype {
+    Highway,
+    PavedRoad,
+    DirtRoad,
+    TrailJunction,
 }
 ```
 
@@ -228,3 +275,4 @@ enum TrailWaypointSubtype {
 
 - How to name tables so that they're easiest to download for offline usage in Parse. I think Parse generally downloads an entire table. Should all tables be prefixed by `PCT_`?
 - strings or numbers for identifiers
+- locations for each subwaypoint, but connected when clicked
