@@ -22,6 +22,8 @@ Below is pseudocode/TypeScript for the schemas. Actual parsing happens in the
 JSON schema files, anything below is unofficial and just for documentation
 purposes.
 
+### General types
+
 I'm planning to use Parse Server, an open source backend as a service, for my
 backend. This has a `GeoPoint` type. Consider `GeoPoint` to be a standard object
 with `latitude` and `longitude` keys. Parse adds `__type: "GeoPoint"`, but this
@@ -39,6 +41,23 @@ For now, I'll say a `Geometry` is always a valid GeoJSON string. (Encoded as a
 string, not an object).
 ```ts
 type Geometry = string;
+```
+
+Comments will be permitted on many types of waypoints. Let's define the default
+feedback as just an array of comments.
+```ts
+interface DefaultFeedback {
+    comments: Comment[]
+}
+interface Comment {
+    userId: string,
+    body: string,
+    // true == "northbound", where northbound is usually defined as south to
+    // north, but could be defined as the "standard" way for an east-west facing
+    // trail, like the Colorado Trail.
+    direction?: boolean,
+    date: Date,
+}
 ```
 
 ### Town
@@ -65,10 +84,14 @@ interface Town {
     geometry: Geometry,
     // trails that this Town is a part of. I.e. [PCT]
     trails: string[],
+    feedback: TownFeedback,
 }
 enum TownType {
     City
     Resort
+}
+interface TownFeedback {
+    comments: Comments[]
 }
 ```
 
@@ -93,6 +116,7 @@ interface TownWaypoint {
     osm: TownWaypointOSM,
     // attributes that are not pinned to OSM
     attributes: TownWaypointAttributes,
+    feedback: TownWaypointFeedback,
 }
 // TODO figure out waypoint type and subtype
 enum TownWaypointType {
@@ -184,6 +208,10 @@ interface Address {
     city?: string,
     state?: string,
 }
+interface TownWaypointFeedback extends DefaultFeedback {
+    upvotes: number,
+    downvotes: number,
+}
 ```
 
 ### Trail
@@ -223,6 +251,11 @@ interface TrailWaypoint {
     desc?: string,
     type: TrailWaypointType,
     subtype: TrailWaypointSubtype,
+    feedback: TrailWaypointFeedback,
+    // Location of waypoint itself
+    geometry: GeoPoint,
+    // Elevation in **meters**
+    elevation: number,
 }
 enum TrailWaypointType {
     Water,
@@ -268,11 +301,82 @@ enum TransSubtype {
     DirtRoad,
     TrailJunction,
 }
+type TrailWaypointFeedback = WaterFeedback || CampFeedback || DefaultFeedback;
+type WaterFeedback = StreamFeedback || LakeFeedback || SpringFeedback || CacheFeedback || FaucetFeedback;
+interface StreamFeedback extends DefaultFeedback {
+
+}
+interface LakeFeedback extends DefaultFeedback {
+
+}
+interface SpringFeedback extends DefaultFeedback {
+
+}
+interface CacheFeedback extends DefaultFeedback {
+
+}
+interface FaucetFeedback extends DefaultFeedback {
+
+}
+interface CampFeedback extends DefaultFeedback {
+
+}
+interface StreamFeedbackItem {
+    date: Date,
+    userId: number,
+    flowing: Flowing
+    waterQuality: WaterQuality
+}
+interface CampFeedbackItem {
+    date: Date,
+    userId: number,
+    // Number of tent sites the user thinks comfortably fit
+    campsiteFits: number,
+}
+interface HitchFeedbackItem {
+    date: Date,
+    userId: number,
+    // Time reported spent waiting for a hitch
+    timeHitching: TimeHitching,
+}
+enum Flowing {
+    flowing
+    trickle
+    dry
+}
+enum WaterQuality {
+    Great
+    Good
+    Ok
+    Poor
+}
+enum TimeHitching {
+    "<15",
+    "15-30",
+    "30-45",
+    "45-60",
+    ">60"
+}
 ```
 
+### User
+
+```ts
+interface User {
+    // Doesn't have to be their real name
+    // Must not include any characters that are invalid in URLs
+    name: string,
+    // Not sure whether to make this required or not
+    email: string,
+    // password hashed
+    password: string,
+}
+```
 
 ## To Do
 
 - How to name tables so that they're easiest to download for offline usage in Parse. I think Parse generally downloads an entire table. Should all tables be prefixed by `PCT_`?
 - strings or numbers for identifiers
 - locations for each subwaypoint, but connected when clicked
+- How to link trail waypoints to the trail itself? The waypoints can be off trail, but I should probably keep track of the mile marker of the closest trail location?
+- Where should you keep waypoint responses? Do you want to separate these from what gets recursively downloaded? On the one hand, it's more data than is needed to show the user the current state, on the other, if you're already downloading the comments, downloading these is not that much more. Maybe make the schema work either way?
