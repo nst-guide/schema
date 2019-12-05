@@ -26,6 +26,7 @@
     },
     "Comment": {
       "type": "object",
+      "required": ["userId", "userName", "body", "date"],
       "properties": {
         "userId": {
           "type": "string"
@@ -43,6 +44,48 @@
         "date": {
           "type": "string",
           "format": "date-time"
+        }
+      }
+    },
+    "FeedbackVote": {
+      "type": "object",
+      "required": ["userId", "date"],
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "upvote": {
+          "type": "boolean"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Address": {
+      "type": "object",
+      "properties": {
+        "housenumber": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "flats": {
+          "description": "OSM way of saying 'address line 2'",
+          "type": "string"
+        },
+        "postcode": {
+          "description": "zip code",
+          "type": "string",
+          "pattern": "^\\d{5}(-\\d{4})?$"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
         }
       }
     }

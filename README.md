@@ -80,7 +80,9 @@ Below is pseudocode/TypeScript for the schemas. Actual parsing happens in the
 JSON schema files, anything below is unofficial and just for documentation
 purposes.
 
-### General types
+### Common types
+
+These types are reused in several tables.
 
 I'm planning to use Parse Server, an open source backend as a service, for my
 backend. This has a `GeoPoint` type. Consider `GeoPoint` to be a standard object
@@ -121,6 +123,20 @@ interface Comment {
 }
 ```
 
+Address:
+
+```ts
+interface Address {
+  housenumber?: string;
+  street?: string;
+  // comparable to address line 2
+  flats?: string;
+  postcode?: string;
+  city?: string;
+  state?: string;
+}
+```
+
 ### Town
 
 Rows should be unique among towns. A "town" can include resupply areas that are
@@ -134,7 +150,7 @@ interface Town {
     // Common name for town
     name: string,
     // Type of town
-    townType: TownType,
+    type: TownType,
     // Geographic centroid of town. I think this probably is meant to be more of
     // a "representative point" in Shapely's parlance. A centroid may be outside
     // of a polygon; it would be nice if the centroid argument is always within
@@ -178,41 +194,41 @@ interface TownWaypoint {
     // object that holds OSM information
     osm: TownWaypointOSM,
     // attributes that are not pinned to OSM
-    attributes: TownWaypointAttributes,
+    attrs: TownWaypointAttributes,
     feedback: TownWaypointFeedback,
 }
 // TODO figure out waypoint type and subtype
 enum TownWaypointType {
-    Food,
-    Lodging,
-    Finance,
-    Store,
-    Medical,
+    food,
+    lodging,
+    finance,
+    store,
+    medical,
     ...
 }
 type TownWaypointSubtype = FoodSubtype || LodgingSubtype || FinanceSubtype || StoreSubtype || MedicalSubtype;
 enum FoodSubtype {
-    FastFood,
-    Cafe,
-    Restaurant,
-    Bar,
+    fastFood,
+    cafe,
+    restaurant,
+    bar,
 }
 enum LodgingSubtype {
-    Hotel,
-    Motel,
-    Camping,
+    hotel,
+    motel,
+    camping,
 }
 enum FinanceSubtype {
-    ATM,
-    Bank,
+    atm,
+    bank,
 }
 enum StoreSubtype {
-    OutdoorsStore,
-    Grocery,
+    outdoorsStore,
+    grocery,
 }
 enum MedicalSubtype {
-    Hospital,
-    Pharmacy
+    hospital,
+    pharmacy
 }
 interface TownWaypointOSM {
     nodeId?: number,
@@ -227,6 +243,9 @@ interface TownWaypointOSM {
     opening_hours?: string,
     phone?: string,
     website?: string,
+    // OSM has both email= and contact:email= tag keys
+    email?: string,
+    contact_email?: string,
     // internet_access==wlan
     internet_access?: boolean,
     internet_access_fee?: boolean,
@@ -258,22 +277,11 @@ interface ResupplyProvider {
     fedex?: boolean,
 }
 interface ResupplyAddress {
-    // either ups, usps, fedex
-    provider: string[],
+    provider: ResupplyProvider,
     address: Address,
 }
-interface Address {
-    housenumber?: string,
-    // comparable to address line 2
-    flats?: string,
-    street?: string,
-    postcode?: string,
-    city?: string,
-    state?: string,
-}
 interface TownWaypointFeedback extends DefaultFeedback {
-    upvotes: number,
-    downvotes: number,
+    votes: FeedbackVote[]
 }
 ```
 
@@ -436,6 +444,16 @@ interface User {
 }
 ```
 
+## Tests
+
+Test data is defined in `tests/{schema}/*.json`, where `schema` is the name of
+the schema the data is to be tested against.
+
+`tests/test_schemas.js` is the JS test script, using Ajv, and
+`tests/test_schemas.py` is the Python test script, using the `jsonschema`
+package. You can run the JS tests with `yarn test` and the Python tests with
+`pytest`.
+
 ## To Do
 
 - How to name tables so that they're easiest to download for offline usage in Parse. I think Parse generally downloads an entire table. Should all tables be prefixed by `PCT_`?
@@ -443,3 +461,4 @@ interface User {
 - locations for each subwaypoint, but connected when clicked
 - How to link trail waypoints to the trail itself? The waypoints can be off trail, but I should probably keep track of the mile marker of the closest trail location?
 - Where should you keep waypoint responses? Do you want to separate these from what gets recursively downloaded? On the one hand, it's more data than is needed to show the user the current state, on the other, if you're already downloading the comments, downloading these is not that much more. Maybe make the schema work either way?
+- Should ResupplyProvider be an object of booleans or an array of enum strings?

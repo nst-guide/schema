@@ -6,7 +6,7 @@
   "required": [
     "id",
     "name",
-    "townType",
+    "type",
     "centroid",
     "trails",
     "feedback",
@@ -21,7 +21,7 @@
       "type": "string",
       "description": "Common name for town"
     },
-    "townType": {
+    "type": {
       "$ref": "#/definitions/TownType"
     },
     "centroid": {
@@ -33,7 +33,8 @@
     "trails": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "enum": ["pct", "cdt", "at", "azt", "jmt", "pnt", "ct"]
       }
     },
     "feedback": {

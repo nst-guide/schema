@@ -1,0 +1,243 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "townwaypoint.json",
+  "type": "object",
+  "title": "TownWaypoint schema",
+  "required": [
+    "id",
+    "townId",
+    "name",
+    "type",
+    "subtype",
+    "geopoint",
+    "osm",
+    "attrs",
+    "feedback"
+  ],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier for town waypoint"
+    },
+    "townId": {
+      "type": "number",
+      "description": "reference to Town"
+    },
+    "name": {
+      "type": "string",
+      "description": "Common name for town waypoint"
+    },
+    "desc": {
+      "type": "string",
+      "description": "longer description of waypoint"
+    },
+    "type": {
+      "$ref": "#/definitions/TownWaypointType"
+    },
+    "subtype": {
+      "$ref": "#/definitions/TownWaypointSubtype"
+    },
+    "geopoint": {
+      "$ref": "common.json#/definitions/GeoPoint"
+    },
+    "geometry": {
+      "type": "string"
+    },
+    "osm": {
+      "$ref": "#/definitions/TownWaypointOSM"
+    },
+    "attrs": {
+      "$ref": "#/definitions/TownWaypointAttributes"
+    },
+    "feedback": {
+      "$ref": "#/definitions/TownWaypointFeedback"
+    }
+  },
+  "definitions": {
+    "TownWaypointType": {
+      "type": "string",
+      "enum": ["food", "lodging", "finance", "store", "medical"]
+    },
+    "TownWaypointSubtype": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/FoodSubtype"
+        },
+        {
+          "$ref": "#/definitions/LodgingSubtype"
+        },
+        {
+          "$ref": "#/definitions/FinanceSubtype"
+        },
+        {
+          "$ref": "#/definitions/StoreSubtype"
+        },
+        {
+          "$ref": "#/definitions/MedicalSubtype"
+        }
+      ]
+    },
+    "FoodSubtype": {
+      "type": "string",
+      "enum": ["fastFood", "cafe", "restaurant", "bar"]
+    },
+    "LodgingSubtype": {
+      "type": "string",
+      "enum": ["hotel", "motel", "camping"]
+    },
+    "FinanceSubtype": {
+      "type": "string",
+      "enum": ["atm", "bank"]
+    },
+    "StoreSubtype": {
+      "type": "string",
+      "enum": ["outdoorsStore", "grocery"]
+    },
+    "MedicalSubtype": {
+      "type": "string",
+      "enum": ["hospital", "pharmacy"]
+    },
+    "TownWaypointOSM": {
+      "type": "object",
+      "properties": {
+        "nodeId": {
+          "type": "integer"
+        },
+        "wayId": {
+          "type": "integer"
+        },
+        "relationId": {
+          "type": "integer"
+        },
+        "amenity": {
+          "type": "string"
+        },
+        "shop": {
+          "type": "string"
+        },
+        "opening_hours": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string",
+          "pattern": "^1?\\d{10}$"
+        },
+        "website": {
+          "type": "string",
+          "format": "uri"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "contact_email": {
+          "type": "string",
+          "format": "email"
+        },
+        "internet_access": {
+          "type": "boolean"
+        },
+        "internet_access_fee": {
+          "type": "boolean"
+        },
+        "toilets_disposal": {
+          "type": "string"
+        },
+        "drinking_water": {
+          "type": "boolean"
+        }
+      }
+    },
+    "TownWaypointAttributes": {
+      "wifi": {
+        "type": "boolean"
+      },
+      "phone": {
+        "type": "string"
+      },
+      "website": {
+        "type": "string"
+      },
+      "power": {
+        "type": "boolean"
+      },
+      "shower": {
+        "type": "boolean"
+      },
+      "showerFee": {
+        "type": "string"
+      },
+      "laundry": {
+        "type": "boolean"
+      },
+      "laundryFee": {
+        "type": "string"
+      },
+      "toilets": {
+        "type": "boolean"
+      },
+      "toiletsFlush": {
+        "type": "boolean"
+      },
+      "acceptsResupply": {
+        "type": "boolean"
+      },
+      "acceptsResupplyFee": {
+        "type": "string"
+      },
+      "acceptsResupplyProvider": {
+        "$ref": "#/definitions/ResupplyProvider"
+      },
+      "acceptsResupplyAddress": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/ResupplyAddress"
+        }
+      },
+      "sendsResupply": {
+        "type": "boolean"
+      },
+      "sendsResupplyProvider": {
+        "$ref": "#/definitions/ResupplyProvider"
+      }
+    },
+    "ResupplyProvider": {
+      "type": "object",
+      "properties": {
+        "ups": "boolean",
+        "usps": "boolean",
+        "fedex": "boolean"
+      }
+    },
+    "ResupplyAddress": {
+      "type": "object",
+      "required": ["provider", "address"],
+      "properties": {
+        "provider": {
+          "$ref": "#/definitions/ResupplyProvider"
+        },
+        "address": {
+          "$ref": "common.json#/definitions/Address"
+        }
+      }
+    },
+    "TownWaypointFeedback": {
+      "type": "object",
+      "required": ["comments", "votes"],
+      "properties": {
+        "comments": {
+          "type": "array",
+          "items": {
+            "$ref": "common.json#/definitions/Comment"
+          }
+        },
+        "votes": {
+          "type": "array",
+          "items": {
+            "$ref": "common.json#/definitions/FeedbackVote"
+          }
+        }
+      }
+    }
+  }
+}
