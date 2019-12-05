@@ -1,5 +1,7 @@
 # Schema
 
+[![Build Status](https://travis-ci.org/nst-guide/schema.svg?branch=master)](https://travis-ci.org/nst-guide/schema)
+
 This repository holds JSON Schemas to validate each of the tables of the project.
 
 The idea is that with small wrappers written in JS and Python, this can be an
@@ -47,33 +49,35 @@ is not required if working outside Parse.
 
 ```ts
 interface GeoPoint {
-    __type?: string
-    latitude: number,
-    longitude: number,
+  __type?: string;
+  latitude: number;
+  longitude: number;
 }
 ```
 
 For now, I'll say a `Geometry` is always a valid GeoJSON string. (Encoded as a
 string, not an object).
+
 ```ts
 type Geometry = string;
 ```
 
 Comments will be permitted on many types of waypoints. Let's define the default
 feedback as just an array of comments.
+
 ```ts
 interface DefaultFeedback {
-    comments: Comment[]
+  comments: Comment[];
 }
 interface Comment {
-    userId: string,
-    userName: string,
-    body: string,
-    // true == "northbound", where northbound is usually defined as south to
-    // north, but could be defined as the "standard" way for an east-west facing
-    // trail, like the Colorado Trail.
-    direction?: boolean,
-    date: Date,
+  userId: string;
+  userName: string;
+  body: string;
+  // true == "northbound", where northbound is usually defined as south to
+  // north, but could be defined as the "standard" way for an east-west facing
+  // trail, like the Colorado Trail.
+  direction?: boolean;
+  date: Date;
 }
 ```
 
@@ -239,11 +243,11 @@ An overall, named hiking trail, like the Pacific Crest Trail, or Appalachian Tra
 
 ```ts
 interface Trail {
-    id: number,
-    name: string,
-    desc: string,
-    // Link to TrailSection
-    trailSections: string[]
+  id: number;
+  name: string;
+  desc: string;
+  // Link to TrailSection
+  trailSections: string[];
 }
 ```
 
@@ -253,8 +257,8 @@ A smaller part of a larger Trail.
 
 ```ts
 interface TrailSection {
-    id: number,
-    alternate: boolean,
+  id: number;
+  alternate: boolean;
 }
 ```
 
@@ -382,13 +386,13 @@ enum TimeHitching {
 
 ```ts
 interface User {
-    // Doesn't have to be their real name
-    // Must not include any characters that are invalid in URLs
-    name: string,
-    // Not sure whether to make this required or not
-    email: string,
-    // password hashed
-    password: string,
+  // Doesn't have to be their real name
+  // Must not include any characters that are invalid in URLs
+  name: string;
+  // Not sure whether to make this required or not
+  email: string;
+  // password hashed
+  password: string;
 }
 ```
 
