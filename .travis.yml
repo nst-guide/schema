@@ -1,0 +1,12 @@
+matrix:
+  include:
+    - language: python
+      python: 3.7
+      install: pip install -r requirements.txt -r requirements_dev.txt
+      script:
+        - pytest
+
+    - language: node_js
+      node_js: lts/*
+      install: yarn install
+      script: yarn test
