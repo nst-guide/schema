@@ -4,16 +4,11 @@
   "definitions": {
     "GeoPoint": {
       "type": "object",
-      "required": [
-        "latitude",
-        "longitude"
-      ],
+      "required": ["latitude", "longitude"],
       "properties": {
         "__type": {
           "type": "string",
-          "enum": [
-            "GeoPoint"
-          ]
+          "enum": ["GeoPoint"]
         },
         "latitude": {
           "type": "number",

@@ -49,10 +49,7 @@
   "definitions": {
     "TownType": {
       "type": "string",
-      "enum": [
-        "city",
-        "resort"
-      ]
+      "enum": ["city", "resort"]
     },
     "TownFeedback": {
       "type": "array",
