@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "user.json",
+  "type": "object",
+  "additionalProperties": false,
+  "title": "User schema",
+  "required": ["userName", "email", "password"],
+  "properties": {
+    "userName": {
+      "type": "string",
+      "pattern": "^todo$"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "password": {
+      "type": "string"
+    },
+    "units": {
+      "type": "object",
+      "properties": {
+        "distance": {
+          "type": "string",
+          "enum": ["metric", "imperial", "both"]
+        },
+        "temperature": {
+          "type": "string",
+          "enum": ["metric", "imperial", "both"]
+        }
+      }
+    },
+    "social": {
+      "type": "object",
+      "properties": {
+        "facebook": {
+          "type": "string"
+        },
+        "twitter": {
+          "type": "string"
+        },
+        "youtube": {
+          "type": "string"
+        },
+        "instagram": {
+          "type": "string"
+        },
+        "reddit": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

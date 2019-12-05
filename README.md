@@ -436,11 +436,21 @@ enum TimeHitching {
 interface User {
   // Doesn't have to be their real name
   // Must not include any characters that are invalid in URLs
-  name: string;
+  userName: string;
   // Not sure whether to make this required or not
   email: string;
-  // password hashed
+  // password hashed (or to be hashed)
   password: string;
+  // units
+  units;
+  social: UserSocial;
+}
+interface UserSocial {
+  facebook: string;
+  twitter: string;
+  youtube: string;
+  instagram: string;
+  reddit: string;
 }
 ```
 
