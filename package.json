@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "This repository holds JSON Schemas to validate each of the tables of the project.",
   "main": "index.js",
+  "files": [
+    "index.js",
+    "schemas/*.json"
+  ],
   "directories": {
     "test": "tests"
   },
