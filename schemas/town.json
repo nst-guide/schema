@@ -54,29 +54,7 @@
     "TownFeedback": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/Comment"
-      }
-    },
-    "Comment": {
-      "type": "object",
-      "properties": {
-        "userId": {
-          "type": "string"
-        },
-        "userName": {
-          "type": "string"
-        },
-        "body": {
-          "type": "string"
-        },
-        "direction": {
-          "description": "direction of travel. true means 'northbound' where northbound is usually defined as south to north, but could be defined as the 'standard' way for an east-west facing trail, like the Colorado Trail",
-          "type": "boolean"
-        },
-        "date": {
-          "type": "string",
-          "format": "date-time"
-        }
+        "$ref": "common.json#/definitions/Comment"
       }
     }
   }
