@@ -1,7 +1,10 @@
 import json
 
-from jsonschema import validate as jsonvalidate
+import jsonschema
 from pkg_resources import resource_filename
+
+schema_dir = resource_filename('nstschema', 'schemas')
+resolver = jsonschema.RefResolver('file://' + schema_dir + '/', None)
 
 
 def validate(instance, schema_name):
@@ -14,7 +17,11 @@ def validate(instance, schema_name):
     schema_path = get_schema_path(schema_name.lower())
     with open(schema_path) as f:
         schema = json.load(f)
-    jsonvalidate(instance=instance, schema=schema)
+    jsonschema.validate(
+        instance=instance,
+        schema=schema,
+        resolver=resolver,
+        format_checker=jsonschema.draft7_format_checker)
 
 
 def get_schema_path(schema_name):

@@ -25,7 +25,7 @@
       "$ref": "#/definitions/TownType"
     },
     "centroid": {
-      "$ref": "#/definitions/GeoPoint"
+      "$ref": "common.json#/definitions/GeoPoint"
     },
     "geometry": {
       "type": "string"
@@ -53,33 +53,6 @@
         "city",
         "resort"
       ]
-    },
-    "GeoPoint": {
-      "type": "object",
-      "required": [
-        "latitude",
-        "longitude"
-      ],
-      "properties": {
-        "__type": {
-          "type": "string",
-          "enum": [
-            "GeoPoint"
-          ]
-        },
-        "latitude": {
-          "type": "number",
-          "description": "Min/Max are bbox of US (all 50 states)",
-          "minimum": 18.91619,
-          "maximum": 71.3577635769
-        },
-        "longitude": {
-          "type": "number",
-          "description": "Min/Max are bbox of US (all 50 states)",
-          "minimum": -171.791110603,
-          "maximum": -66.96466
-        }
-      }
     },
     "TownFeedback": {
       "type": "array",

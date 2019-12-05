@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "common.json",
+  "definitions": {
+    "GeoPoint": {
+      "type": "object",
+      "required": [
+        "latitude",
+        "longitude"
+      ],
+      "properties": {
+        "__type": {
+          "type": "string",
+          "enum": [
+            "GeoPoint"
+          ]
+        },
+        "latitude": {
+          "type": "number",
+          "description": "Min/Max are bbox of US (all 50 states)",
+          "minimum": 18.91619,
+          "maximum": 71.3577635769
+        },
+        "longitude": {
+          "type": "number",
+          "description": "Min/Max are bbox of US (all 50 states)",
+          "minimum": -171.791110603,
+          "maximum": -66.96466
+        }
+      }
+    }
+  }
+}
