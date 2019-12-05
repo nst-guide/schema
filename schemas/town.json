@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "https://nst.guide/schemas/town.json",
+  "$id": "town.json",
   "type": "object",
   "title": "Town schema",
   "required": [
@@ -49,15 +49,23 @@
   "definitions": {
     "TownType": {
       "type": "string",
-      "enum": ["city", "resort"]
+      "enum": [
+        "city",
+        "resort"
+      ]
     },
     "GeoPoint": {
       "type": "object",
-      "required": ["latitude", "longitude"],
+      "required": [
+        "latitude",
+        "longitude"
+      ],
       "properties": {
         "__type": {
           "type": "string",
-          "enum": ["GeoPoint"]
+          "enum": [
+            "GeoPoint"
+          ]
         },
         "latitude": {
           "type": "number",
