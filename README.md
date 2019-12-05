@@ -20,11 +20,27 @@ This is a work in progress!
 
 ## Installation
 
+**Python:**
+
 ```
 pip install git+https://github.com/nst-guide/schema --upgrade
 ```
 
+**JS:**
+
+```
+npm install @nst-guide/schema --save
+```
+
+or
+
+```
+yarn add @nst-guide/schema
+```
+
 ## Usage
+
+**Python:**
 
 ```py
 from nstschema import validate
@@ -34,7 +50,31 @@ town = {
 validate(town, 'Town')
 ```
 
-## Tables
+**JS:**
+
+For simple validation, you can just use `validate`:
+
+```js
+import { validate } from '@nst-guide/schema';
+const town = {
+  name: 'town name',
+};
+validate(town, 'Town');
+```
+
+Alternatively, if you have many things to validate, it could be faster to first use `compile`:
+
+```js
+import { compile } from '@nst-guide/schema';
+const validate = compile('Town');
+const town = {
+  name: 'town name',
+};
+const valid = validate(town);
+if (!valid) throw validate.errors;
+```
+
+## Table descriptions
 
 Below is pseudocode/TypeScript for the schemas. Actual parsing happens in the
 JSON schema files, anything below is unofficial and just for documentation
