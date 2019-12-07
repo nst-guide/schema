@@ -72,6 +72,21 @@
         }
       }
     },
+    "ParseDate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["__type", "iso"],
+      "properties": {
+        "__type": {
+          "type": "string",
+          "enum": ["Date"]
+        },
+        "iso": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
     "ParseFile": {
       "type": "object",
       "additionalProperties": false,
@@ -113,6 +128,53 @@
           "description": "Min/Max are bbox of US (all 50 states)",
           "minimum": -171.791110603,
           "maximum": -66.96466
+        }
+      }
+    },
+    "ParsePointer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["__type", "className", "objectId"],
+      "properties": {
+        "__type": {
+          "type": "string",
+          "enum": ["Pointer"]
+        },
+        "className": {
+          "type": "string",
+          "enum": [
+            "Town",
+            "TownWaypoint",
+            "Trail",
+            "TrailSection",
+            "TrailWaypoint",
+            "_User"
+          ]
+        },
+        "objectId": {
+          "type": "string"
+        }
+      }
+    },
+    "ParseRelation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["__type", "className"],
+      "properties": {
+        "__type": {
+          "type": "string",
+          "enum": ["Pointer"]
+        },
+        "className": {
+          "type": "string",
+          "enum": [
+            "Town",
+            "TownWaypoint",
+            "Trail",
+            "TrailSection",
+            "TrailWaypoint",
+            "_User"
+          ]
         }
       }
     },
