@@ -1,0 +1,34 @@
+{
+  "id": 3,
+  "name": "Big Lake Youth Camp",
+  "type": "resort",
+  "centroid": {
+    "__type": "GeoPoint",
+    "latitude": 44.37172,
+    "longitude": -121.86558
+  },
+  "trails": ["pct"],
+  "feedback": [
+    {
+      "userId": "userid",
+      "userName": "johndoe",
+      "body": "BLYC was great!",
+      "direction": "north",
+      "date": "2017-11-13T20:20:39Z"
+    },
+    {
+      "userId": "userid3",
+      "userName": "janedoe2",
+      "body": "Comment",
+      "date": "2019-11-20T20:20:39Z"
+    },
+    {
+      "userId": "userid2",
+      "userName": "janedoe",
+      "body": "Hello world",
+      "direction": "south",
+      "date": "2019-11-20T20:20:39Z"
+    }
+  ],
+  "elevation": 1430
+}

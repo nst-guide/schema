@@ -43,7 +43,8 @@
         },
         "direction": {
           "description": "direction of travel. true means 'northbound' where northbound is usually defined as south to north, but could be defined as the 'standard' way for an east-west facing trail, like the Colorado Trail",
-          "type": "boolean"
+          "type": "string",
+          "enum": ["north", "south"]
         },
         "date": {
           "type": "string",
