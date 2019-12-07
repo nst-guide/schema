@@ -9,9 +9,12 @@
   },
   "trails": [
     {
-      "__type": "Pointer",
-      "className": "Trail",
-      "objectId": "pct"
+      "mileMarker": 123,
+      "trail": {
+        "__type": "Pointer",
+        "className": "Trail",
+        "objectId": "pct"
+      }
     }
   ],
   "feedback": [
