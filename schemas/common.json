@@ -72,6 +72,27 @@
         }
       }
     },
+    "File": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["__type", "name", "url"],
+      "properties": {
+        "__type": {
+          "type": "string",
+          "enum": ["File"]
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the uploaded file in Parse.",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}-"
+        },
+        "url": {
+          "type": "string",
+          "description": "Min/Max are bbox of US (all 50 states)",
+          "format": "uri"
+        }
+      }
+    },
     "GeoPoint": {
       "type": "object",
       "additionalProperties": false,
