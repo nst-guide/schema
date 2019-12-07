@@ -26,7 +26,7 @@
       "$ref": "#/definitions/TownType"
     },
     "centroid": {
-      "$ref": "common.json#/definitions/GeoPoint"
+      "$ref": "common.json#/definitions/ParseGeoPoint"
     },
     "geometry": {
       "type": "string"

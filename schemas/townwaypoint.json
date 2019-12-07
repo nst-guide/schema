@@ -38,7 +38,7 @@
       "$ref": "#/definitions/TownWaypointSubtype"
     },
     "geopoint": {
-      "$ref": "common.json#/definitions/GeoPoint"
+      "$ref": "common.json#/definitions/ParseGeoPoint"
     },
     "geometry": {
       "type": "string"
