@@ -54,12 +54,12 @@
     },
     "FeedbackVote": {
       "type": "object",
-      "required": ["userId", "date"],
+      "required": ["userId", "up", "date"],
       "properties": {
         "userId": {
           "type": "string"
         },
-        "upvote": {
+        "up": {
           "type": "boolean"
         },
         "date": {

@@ -1,0 +1,51 @@
+{
+  "id": 1,
+  "townId": 1,
+  "name": "Sweetwater Bakery",
+  "desc": "The best bakery in town.",
+  "type": "food",
+  "subtype": "cafe",
+  "geopoint": {
+    "latitude": 34.495161,
+    "longitude": -118.326259
+  },
+  "osm": {
+    "wayId": 437660962,
+    "amenity": "cafe"
+  },
+  "attrs": {
+    "wifi": true,
+    "power": true,
+    "showers": false
+  },
+  "feedback": {
+    "comments": [
+      {
+        "userId": "abc",
+        "userName": "janedoe",
+        "body": "great coffee",
+        "direction": "north",
+        "date": "2019-11-20T20:20:39Z"
+      },
+      {
+        "userId": "xyz",
+        "userName": "johndoe",
+        "body": "hated it",
+        "direction": "south",
+        "date": "2018-11-20T20:20:39Z"
+      }
+    ],
+    "votes": [
+      {
+        "userId": "abc",
+        "up": true,
+        "date": "2019-11-20T20:23:39Z"
+      },
+      {
+        "userId": "xyz",
+        "up": false,
+        "date": "2018-11-20T20:20:39Z"
+      }
+    ]
+  }
+}
