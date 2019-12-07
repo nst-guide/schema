@@ -7,15 +7,16 @@
   "required": ["userName", "email", "password"],
   "properties": {
     "userName": {
-      "type": "string",
-      "pattern": "^todo$"
+      "$ref": "common.json#/definitions/userName"
     },
     "email": {
       "type": "string",
       "format": "email"
     },
     "password": {
-      "type": "string"
+      "description": "password, minimum length of 8 characters",
+      "type": "string",
+      "minLength": 8
     },
     "units": {
       "type": "object",

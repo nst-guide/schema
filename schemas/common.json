@@ -32,7 +32,7 @@
           "type": "string"
         },
         "userName": {
-          "type": "string"
+          "$ref": "#/definitions/userName"
         },
         "body": {
           "type": "string"
@@ -88,6 +88,11 @@
           "type": "string"
         }
       }
+    },
+    "userName": {
+      "description": "userName may only contain URL-permitted chars",
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9-_~]+$"
     }
   }
 }
