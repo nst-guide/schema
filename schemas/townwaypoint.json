@@ -42,7 +42,7 @@
       "$ref": "common.json#/definitions/ParseGeoPoint"
     },
     "geometry": {
-      "type": "string"
+      "$ref": "common.json#/definitions/ParseFile"
     },
     "osm": {
       "$ref": "#/definitions/TownWaypointOSM"

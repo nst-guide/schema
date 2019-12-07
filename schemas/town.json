@@ -29,7 +29,7 @@
       "$ref": "common.json#/definitions/ParseGeoPoint"
     },
     "geometry": {
-      "type": "string"
+      "$ref": "common.json#/definitions/ParseFile"
     },
     "trails": {
       "type": "array",
