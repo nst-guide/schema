@@ -156,6 +156,24 @@
         }
       }
     },
+    "ParsePointerTown": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["__type", "className", "objectId"],
+      "properties": {
+        "__type": {
+          "type": "string",
+          "enum": ["Pointer"]
+        },
+        "className": {
+          "type": "string",
+          "enum": ["Town"]
+        },
+        "objectId": {
+          "type": "string"
+        }
+      }
+    },
     "ParseRelation": {
       "type": "object",
       "additionalProperties": false,

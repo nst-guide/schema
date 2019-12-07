@@ -21,8 +21,8 @@
       "description": "Unique identifier for town waypoint"
     },
     "townId": {
-      "type": "number",
-      "description": "reference to Town"
+      "description": "reference to Town",
+      "$ref": "common.json#/definitions/ParsePointerTown"
     },
     "name": {
       "type": "string",

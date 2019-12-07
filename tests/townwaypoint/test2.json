@@ -1,6 +1,10 @@
 {
   "id": 1,
-  "townId": 1,
+  "townId": {
+    "__type": "Pointer",
+    "className": "Town",
+    "objectId": "hgksdflkj"
+  },
   "name": "SureStay Hotel by Best Western Tehachapi",
   "desc": "A solid deal, popular among thru-hikers.",
   "type": "lodging",
