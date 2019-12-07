@@ -227,6 +227,7 @@
     },
     "ResupplyProvider": {
       "type": "object",
+      "additionalProperties": false,
       "properties": {
         "ups": { "type": "boolean" },
         "usps": { "type": "boolean" },
@@ -235,6 +236,7 @@
     },
     "ResupplyAddress": {
       "type": "object",
+      "additionalProperties": false,
       "required": ["provider", "address"],
       "properties": {
         "provider": {
@@ -247,6 +249,7 @@
     },
     "TownWaypointFeedback": {
       "type": "object",
+      "additionalProperties": false,
       "required": ["comments", "votes"],
       "properties": {
         "comments": {

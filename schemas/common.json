@@ -4,6 +4,7 @@
   "definitions": {
     "Address": {
       "type": "object",
+      "additionalProperties": false,
       "properties": {
         "housenumber": {
           "type": "string"
@@ -30,6 +31,7 @@
     },
     "Comment": {
       "type": "object",
+      "additionalProperties": false,
       "required": ["userId", "userName", "body", "date"],
       "properties": {
         "userId": {
@@ -54,6 +56,7 @@
     },
     "FeedbackVote": {
       "type": "object",
+      "additionalProperties": false,
       "required": ["userId", "up", "date"],
       "properties": {
         "userId": {
@@ -70,6 +73,7 @@
     },
     "GeoPoint": {
       "type": "object",
+      "additionalProperties": false,
       "required": ["latitude", "longitude"],
       "properties": {
         "__type": {

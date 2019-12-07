@@ -20,6 +20,7 @@
     },
     "units": {
       "type": "object",
+      "additionalProperties": false,
       "properties": {
         "distance": {
           "type": "string",
@@ -33,6 +34,7 @@
     },
     "social": {
       "type": "object",
+      "additionalProperties": false,
       "properties": {
         "facebook": {
           "type": "string"
