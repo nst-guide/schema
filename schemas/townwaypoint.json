@@ -11,7 +11,6 @@
     "type",
     "subtype",
     "geopoint",
-    "osm",
     "attrs",
     "feedback"
   ],
@@ -100,6 +99,11 @@
     },
     "TownWaypointOSM": {
       "type": "object",
+      "anyOf": [
+        { "required": ["nodeId"] },
+        { "required": ["wayId"] },
+        { "required": ["relationId"] }
+      ],
       "properties": {
         "nodeId": {
           "type": "integer"
@@ -205,9 +209,9 @@
     "ResupplyProvider": {
       "type": "object",
       "properties": {
-        "ups": "boolean",
-        "usps": "boolean",
-        "fedex": "boolean"
+        "ups": { "type": "boolean" },
+        "usps": { "type": "boolean" },
+        "fedex": { "type": "boolean" }
       }
     },
     "ResupplyAddress": {
