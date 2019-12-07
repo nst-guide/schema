@@ -19,7 +19,7 @@
     "addr:city": "Tehachapi",
     "addr:state": "CA",
     "addr:postcode": "93561",
-    "internet_access": true
+    "internet_access": "yes"
   },
   "attrs": {
     "wifi": true,

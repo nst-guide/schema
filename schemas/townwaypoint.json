@@ -153,17 +153,21 @@
           "type": "string",
           "format": "email"
         },
-        "contact_email": {
-          "type": "string",
-          "format": "email"
+        "contact:email": {
+          "type": "string"
+        },
+        "contact:phone": {
+          "type": "string"
         },
         "internet_access": {
-          "type": "boolean"
+          "type": "string",
+          "enum": ["wlan", "no", "yes", "terminal"]
         },
-        "internet_access_fee": {
-          "type": "boolean"
+        "internet_access:fee": {
+          "type": "string",
+          "enum": ["yes", "no", "customers"]
         },
-        "toilets_disposal": {
+        "toilets:disposal": {
           "type": "string"
         },
         "drinking_water": {
