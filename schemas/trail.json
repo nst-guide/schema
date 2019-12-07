@@ -4,11 +4,12 @@
   "type": "object",
   "additionalProperties": false,
   "title": "Trail schema",
-  "required": ["id", "name", "desc", "length", "trailSections"],
+  "required": ["trailCode", "name", "desc", "length", "trailSections"],
   "properties": {
-    "id": {
-      "type": "integer",
-      "description": "Unique identifier for trail"
+    "trailCode": {
+      "description": "Unique identifier for trail",
+      "type": "string",
+      "enum": ["pct", "at", "cdt", "ct", "azt", "pnt"]
     },
     "name": {
       "type": "string",
