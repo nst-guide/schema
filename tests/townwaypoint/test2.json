@@ -10,6 +10,13 @@
     "latitude": 35.1322589,
     "longitude": -118.4550271
   },
+  "photos": [
+    {
+      "__type": "File",
+      "url": "https://tiles.nst.guide/parsefiles/bc9f32df-2957-4bb1-93c9-ec47d9870a05/tfss-db295fb2-8a8b-49f3-aad3-dd911142f64f-photo.png",
+      "name": "db295fb2-8a8b-49f3-aad3-dd911142f64f-photo.png"
+    }
+  ],
   "osm": {
     "wayId": 82576193,
     "tourism": "motel",

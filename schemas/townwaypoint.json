@@ -12,7 +12,8 @@
     "subtype",
     "geopoint",
     "attrs",
-    "feedback"
+    "feedback",
+    "photos"
   ],
   "properties": {
     "id": {
@@ -51,6 +52,12 @@
     },
     "feedback": {
       "$ref": "#/definitions/TownWaypointFeedback"
+    },
+    "photos": {
+      "type": "array",
+      "items": {
+        "$ref": "common.json#/definitions/ParseFile"
+      }
     }
   },
   "definitions": {
