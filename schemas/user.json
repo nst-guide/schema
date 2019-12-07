@@ -4,7 +4,7 @@
   "type": "object",
   "additionalProperties": false,
   "title": "User schema",
-  "required": ["userName", "email", "password"],
+  "required": ["userName", "email", "password", "units", "locationHistory"],
   "properties": {
     "userName": {
       "$ref": "common.json#/definitions/userName"
@@ -52,6 +52,26 @@
           "type": "string"
         }
       }
+    },
+    "locationHistory": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["date", "location"],
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "location": {
+            "$ref": "common.json#/definitions/ParseGeoPoint"
+          }
+        }
+      }
+    },
+    "avatar": {
+      "$ref": "common.json#/definitions/ParseFile"
     }
   }
 }
