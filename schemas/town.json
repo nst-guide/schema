@@ -15,7 +15,7 @@
   ],
   "properties": {
     "id": {
-      "type": "integer",
+      "type": "string",
       "description": "Unique identifier for town"
     },
     "name": {
@@ -34,8 +34,7 @@
     "trails": {
       "type": "array",
       "items": {
-        "type": "string",
-        "enum": ["pct", "cdt", "at", "azt", "jmt", "pnt", "ct"]
+        "$ref": "common.json#/definitions/ParsePointerTrail"
       }
     },
     "feedback": {

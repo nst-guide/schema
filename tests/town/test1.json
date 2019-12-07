@@ -1,5 +1,5 @@
 {
-  "id": 1,
+  "id": "1",
   "name": "Agua Dulce",
   "type": "city",
   "centroid": {
@@ -7,7 +7,13 @@
     "latitude": 34.4963809,
     "longitude": -118.334411
   },
-  "trails": ["pct"],
+  "trails": [
+    {
+      "__type": "Pointer",
+      "className": "Trail",
+      "objectId": "pct"
+    }
+  ],
   "feedback": [],
   "elevation": 770
 }

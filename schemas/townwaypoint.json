@@ -17,7 +17,7 @@
   ],
   "properties": {
     "id": {
-      "type": "integer",
+      "type": "string",
       "description": "Unique identifier for town waypoint"
     },
     "townId": {

@@ -1,5 +1,5 @@
 {
-  "id": 2,
+  "id": "2",
   "name": "Truckee",
   "type": "city",
   "centroid": {
@@ -7,7 +7,13 @@
     "latitude": 39.3286,
     "longitude": -120.18304
   },
-  "trails": ["pct"],
+  "trails": [
+    {
+      "__type": "Pointer",
+      "className": "Trail",
+      "objectId": "pct"
+    }
+  ],
   "feedback": [
     {
       "userId": "userid",

@@ -4,10 +4,10 @@
   "type": "object",
   "additionalProperties": false,
   "title": "TrailSection schema",
-  "required": ["id", "name", "alternate"],
+  "required": ["id", "name", "trails", "alternate", "geometry"],
   "properties": {
     "id": {
-      "type": "integer",
+      "type": "string",
       "description": "Unique identifier for trail section"
     },
     "name": {
@@ -17,6 +17,13 @@
     "desc": {
       "type": "string",
       "description": "longer description of trail section"
+    },
+    "trails": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "$ref": "common.json#/definitions/ParsePointerTrail"
+      }
     },
     "length": {
       "type": "object",

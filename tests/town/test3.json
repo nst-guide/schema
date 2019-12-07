@@ -1,5 +1,5 @@
 {
-  "id": 3,
+  "id": "3",
   "name": "Big Lake Youth Camp",
   "type": "resort",
   "centroid": {
@@ -7,7 +7,13 @@
     "latitude": 44.37172,
     "longitude": -121.86558
   },
-  "trails": ["pct"],
+  "trails": [
+    {
+      "__type": "Pointer",
+      "className": "Trail",
+      "objectId": "pct"
+    }
+  ],
   "feedback": [
     {
       "userId": "userid",
