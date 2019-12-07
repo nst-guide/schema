@@ -1,22 +1,29 @@
 {
   "id": 1,
   "townId": 1,
-  "name": "Sweetwater Bakery",
-  "desc": "The best bakery in town.",
-  "type": "food",
-  "subtype": "cafe",
+  "name": "SureStay Hotel by Best Western Tehachapi",
+  "desc": "A solid deal, popular among thru-hikers.",
+  "type": "lodging",
+  "subtype": "hotel",
   "geopoint": {
-    "latitude": 34.495161,
-    "longitude": -118.326259
+    "latitude": 35.1322589,
+    "longitude": -118.4550271
   },
   "osm": {
-    "wayId": 437660962,
-    "amenity": "cafe"
+    "wayId": 82576193,
+    "tourism": "motel",
+    "website": "https://www.bestwestern.com/en_US/book/tehachapi/hotel-rooms/surestay-hotel-by-best-western-tehachapi/propertyCode.52024.html",
+    "phone": "+1-661-822-5591",
+    "addr:housenumber": "418",
+    "addr:street": "West Tehachapi Boulevard",
+    "addr:city": "Tehachapi",
+    "addr:state": "CA",
+    "internet_access": true
   },
   "attrs": {
     "wifi": true,
     "power": true,
-    "shower": false
+    "shower": true
   },
   "feedback": {
     "comments": [

@@ -83,7 +83,7 @@
     },
     "LodgingSubtype": {
       "type": "string",
-      "enum": ["hotel", "motel", "camping"]
+      "enum": ["hotel", "motel", "camping", "trailAngel"]
     },
     "FinanceSubtype": {
       "type": "string",
@@ -99,6 +99,7 @@
     },
     "TownWaypointOSM": {
       "type": "object",
+      "additionalProperties": false,
       "anyOf": [
         { "required": ["nodeId"] },
         { "required": ["wayId"] },
@@ -114,7 +115,22 @@
         "relationId": {
           "type": "integer"
         },
+        "addr:housenumber": {
+          "type": "string"
+        },
+        "addr:street": {
+          "type": "string"
+        },
+        "addr:city": {
+          "type": "string"
+        },
+        "addr:state": {
+          "type": "string"
+        },
         "amenity": {
+          "type": "string"
+        },
+        "tourism": {
           "type": "string"
         },
         "shop": {
@@ -124,8 +140,7 @@
           "type": "string"
         },
         "phone": {
-          "type": "string",
-          "pattern": "^1?\\d{10}$"
+          "type": "string"
         },
         "website": {
           "type": "string",
@@ -154,56 +169,60 @@
       }
     },
     "TownWaypointAttributes": {
-      "wifi": {
-        "type": "boolean"
-      },
-      "phone": {
-        "type": "string"
-      },
-      "website": {
-        "type": "string"
-      },
-      "power": {
-        "type": "boolean"
-      },
-      "shower": {
-        "type": "boolean"
-      },
-      "showerFee": {
-        "type": "string"
-      },
-      "laundry": {
-        "type": "boolean"
-      },
-      "laundryFee": {
-        "type": "string"
-      },
-      "toilets": {
-        "type": "boolean"
-      },
-      "toiletsFlush": {
-        "type": "boolean"
-      },
-      "acceptsResupply": {
-        "type": "boolean"
-      },
-      "acceptsResupplyFee": {
-        "type": "string"
-      },
-      "acceptsResupplyProvider": {
-        "$ref": "#/definitions/ResupplyProvider"
-      },
-      "acceptsResupplyAddress": {
-        "type": "array",
-        "items": {
-          "$ref": "#/definitions/ResupplyAddress"
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "wifi": {
+          "type": "boolean"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "website": {
+          "type": "string"
+        },
+        "power": {
+          "type": "boolean"
+        },
+        "shower": {
+          "type": "boolean"
+        },
+        "showerFee": {
+          "type": "string"
+        },
+        "laundry": {
+          "type": "boolean"
+        },
+        "laundryFee": {
+          "type": "string"
+        },
+        "toilets": {
+          "type": "boolean"
+        },
+        "toiletsFlush": {
+          "type": "boolean"
+        },
+        "acceptsResupply": {
+          "type": "boolean"
+        },
+        "acceptsResupplyFee": {
+          "type": "string"
+        },
+        "acceptsResupplyProvider": {
+          "$ref": "#/definitions/ResupplyProvider"
+        },
+        "acceptsResupplyAddress": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResupplyAddress"
+          }
+        },
+        "sendsResupply": {
+          "type": "boolean"
+        },
+        "sendsResupplyProvider": {
+          "$ref": "#/definitions/ResupplyProvider"
         }
-      },
-      "sendsResupply": {
-        "type": "boolean"
-      },
-      "sendsResupplyProvider": {
-        "$ref": "#/definitions/ResupplyProvider"
       }
     },
     "ResupplyProvider": {
