@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "trailsection.json",
+  "type": "object",
+  "additionalProperties": false,
+  "title": "TrailSection schema",
+  "required": ["id", "name", "alternate"],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier for trail section"
+    },
+    "name": {
+      "type": "string",
+      "description": "Common name for trail section"
+    },
+    "desc": {
+      "type": "string",
+      "description": "longer description of trail section"
+    },
+    "length": {
+      "type": "object",
+      "description": "length of trail section",
+      "additionalProperties": false,
+      "properties": {
+        "miles": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5000
+        },
+        "kilometers": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 8000
+        }
+      }
+    },
+    "alternate": {
+      "type": "string",
+      "description": "a spur only connects to the main trail in one place. An alternate connects to the trail in two places. A trail that would connect in three places should be split into a spur and an alternate.",
+      "enum": ["no", "spur", "alternate"]
+    }
+  }
+}
