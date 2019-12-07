@@ -39,6 +39,10 @@
       "type": "string",
       "description": "a spur only connects to the main trail in one place. An alternate connects to the trail in two places. A trail that would connect in three places should be split into a spur and an alternate.",
       "enum": ["no", "spur", "alternate"]
+    },
+    "geometry": {
+      "description": "GeoJSON file saved as ParseFile",
+      "$ref": "common.json#/definitions/ParseFile"
     }
   }
 }
