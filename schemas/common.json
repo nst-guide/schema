@@ -2,25 +2,29 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "common.json",
   "definitions": {
-    "GeoPoint": {
+    "Address": {
       "type": "object",
-      "required": ["latitude", "longitude"],
       "properties": {
-        "__type": {
+        "housenumber": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        },
+        "flats": {
+          "description": "OSM way of saying 'address line 2'",
+          "type": "string"
+        },
+        "postcode": {
+          "description": "zip code",
           "type": "string",
-          "enum": ["GeoPoint"]
+          "pattern": "^\\d{5}(-\\d{4})?$"
         },
-        "latitude": {
-          "type": "number",
-          "description": "Min/Max are bbox of US (all 50 states)",
-          "minimum": 18.91619,
-          "maximum": 71.3577635769
+        "city": {
+          "type": "string"
         },
-        "longitude": {
-          "type": "number",
-          "description": "Min/Max are bbox of US (all 50 states)",
-          "minimum": -171.791110603,
-          "maximum": -66.96466
+        "state": {
+          "type": "string"
         }
       }
     },
@@ -63,29 +67,25 @@
         }
       }
     },
-    "Address": {
+    "GeoPoint": {
       "type": "object",
+      "required": ["latitude", "longitude"],
       "properties": {
-        "housenumber": {
-          "type": "string"
-        },
-        "street": {
-          "type": "string"
-        },
-        "flats": {
-          "description": "OSM way of saying 'address line 2'",
-          "type": "string"
-        },
-        "postcode": {
-          "description": "zip code",
+        "__type": {
           "type": "string",
-          "pattern": "^\\d{5}(-\\d{4})?$"
+          "enum": ["GeoPoint"]
         },
-        "city": {
-          "type": "string"
+        "latitude": {
+          "type": "number",
+          "description": "Min/Max are bbox of US (all 50 states)",
+          "minimum": 18.91619,
+          "maximum": 71.3577635769
         },
-        "state": {
-          "type": "string"
+        "longitude": {
+          "type": "number",
+          "description": "Min/Max are bbox of US (all 50 states)",
+          "minimum": -171.791110603,
+          "maximum": -66.96466
         }
       }
     },
