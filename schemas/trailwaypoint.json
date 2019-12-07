@@ -49,12 +49,30 @@
     "trailSections": {
       "type": "array",
       "items": {
-        "type": "string",
         "$ref": "common.json#/definitions/ParsePointerTrailSection"
+      }
+    },
+    "subWaypoints": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/subWaypoints"
       }
     }
   },
   "definitions": {
+    "subWaypoints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["subtype", "location"],
+      "properties": {
+        "subtype": {
+          "$ref": "#/definitions/TrailWaypointSubtype"
+        },
+        "location": {
+          "$ref": "common.json#/definitions/ParseGeoPoint"
+        }
+      }
+    },
     "TrailWaypointType": {
       "type": "string",
       "enum": ["water", "camp", "natural", "trans"]
