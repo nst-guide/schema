@@ -98,7 +98,8 @@ interface GeoPoint {
 ```
 
 For now, I'll say a `Geometry` is always a valid GeoJSON string. (Encoded as a
-string, not an object).
+string, not an object). Though it should be stored in Parse as a Parse.File and
+not part of an object.
 
 ```ts
 type Geometry = string;
@@ -291,7 +292,7 @@ An overall, named hiking trail, like the Pacific Crest Trail, or Appalachian Tra
 
 ```ts
 interface Trail {
-  id: number;
+  trailCode: string;
   name: string;
   desc: string;
   // Link to TrailSection
@@ -315,18 +316,23 @@ interface TrailSection {
 Waypoints that are part of a TrailSection and are trail-focused. A resupply
 location should be a TownWaypoint.
 
+Every TrailWaypoint contains a collection of TrailSubWaypoints
+
 ```ts
 interface TrailWaypoint {
     id: number,
     name?: string,
     desc?: string,
-    type: TrailWaypointType,
-    subtype: TrailWaypointSubtype,
+    type: TrailWaypointType[],
+    subtype: TrailWaypointSubtype[],
+    subWaypoints: TrailSubWaypoints[],
     feedback: TrailWaypointFeedback,
     // Location of waypoint itself
     geometry: GeoPoint,
     // Elevation in **meters**
     elevation: number,
+    osm: TrailWaypointOSM,
+    attrs: TrailWaypointAttributes,
 }
 enum TrailWaypointType {
     Water,
@@ -467,8 +473,6 @@ package. You can run the JS tests with `yarn test` and the Python tests with
 ## To Do
 
 - How to name tables so that they're easiest to download for offline usage in Parse. I think Parse generally downloads an entire table. Should all tables be prefixed by `PCT_`?
-- strings or numbers for identifiers
 - locations for each subwaypoint, but connected when clicked
 - How to link trail waypoints to the trail itself? The waypoints can be off trail, but I should probably keep track of the mile marker of the closest trail location?
 - Where should you keep waypoint responses? Do you want to separate these from what gets recursively downloaded? On the one hand, it's more data than is needed to show the user the current state, on the other, if you're already downloading the comments, downloading these is not that much more. Maybe make the schema work either way?
-- Should ResupplyProvider be an object of booleans or an array of enum strings?

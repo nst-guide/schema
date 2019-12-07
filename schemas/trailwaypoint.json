@@ -1,0 +1,161 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "trailwaypoint.json",
+  "type": "object",
+  "additionalProperties": false,
+  "title": "TrailWaypoint schema",
+  "required": [
+    "id",
+    "type",
+    "subtype",
+    "geopoint",
+    "osm",
+    "attrs",
+    "feedback",
+    "trailSections"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for waypoint"
+    },
+    "name": {
+      "type": "string",
+      "description": "Common name for waypoint"
+    },
+    "desc": {
+      "type": "string",
+      "description": "longer description of waypoint"
+    },
+    "type": {
+      "$ref": "#/definitions/TrailWaypointType"
+    },
+    "subtype": {
+      "$ref": "#/definitions/TrailWaypointSubtype"
+    },
+    "geopoint": {
+      "description": "Point location of waypoint",
+      "$ref": "common.json#/definitions/ParseGeoPoint"
+    },
+    "osm": {
+      "$ref": "#/definitions/TrailWaypointOSM"
+    },
+    "attrs": {
+      "$ref": "#/definitions/TrailWaypointAttributes"
+    },
+    "feedback": {
+      "$ref": "#/definitions/TrailWaypointFeedback"
+    },
+    "trailSections": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "$ref": "common.json#/definitions/ParsePointerTrailSection"
+      }
+    }
+  },
+  "definitions": {
+    "TrailWaypointType": {
+      "type": "string",
+      "enum": ["water", "camp", "natural", "trans"]
+    },
+    "TrailWaypointSubtype": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/WaterSubtype"
+        },
+        {
+          "$ref": "#/definitions/CampSubtype"
+        },
+        {
+          "$ref": "#/definitions/NaturalSubtype"
+        },
+        {
+          "$ref": "#/definitions/TransSubtype"
+        }
+      ]
+    },
+    "WaterSubtype": {
+      "type": "string",
+      "description": "stream: natural LineString source; lake: natural polygon source; spring: natural point source; cache: non-natural source that must be refilled; faucet: non-natural source that doesn't need to be refilled but could be turned off.",
+      "enum": ["stream", "lake", "spring", "cache", "fauce"]
+    },
+    "CampSubtype": {
+      "type": "string",
+      "enum": ["campsite", "campground", "enclosedShelter", "unenclosedShelter"]
+    },
+    "NaturalSubtype": {
+      "type": "string",
+      "enum": ["pass", "peak"]
+    },
+    "TransSubtype": {
+      "type": "string",
+      "enum": ["highway", "pavedRoad", "dirtRoad", "trailJunction"]
+    },
+    "TrailWaypointOSM": {
+      "type": "object",
+      "additionalProperties": false,
+      "anyOf": [
+        { "required": ["nodeId"] },
+        { "required": ["wayId"] },
+        { "required": ["relationId"] }
+      ],
+      "properties": {
+        "nodeId": {
+          "type": "integer"
+        },
+        "wayId": {
+          "type": "integer"
+        },
+        "relationId": {
+          "type": "integer"
+        },
+        "waterway": {
+          "type": "string"
+        },
+        "amenity": {
+          "type": "string",
+          "enum": ["shelter", "toilets"]
+        },
+        "shelter_type": {
+          "type": "string",
+          "enum": ["basic_hut", "lean_to"]
+        },
+        "drinking_water": {
+          "type": "string"
+        },
+        "tourism": {
+          "type": "string",
+          "enum": ["wilderness_hut", "camp_site"]
+        },
+        "natural": {
+          "type": "string",
+          "enum": ["water", "spring", "hot_spring", "peak", "saddle"]
+        },
+        "toilets_disposal": {
+          "type": "string"
+        }
+      }
+    },
+    "TrailWaypointAttributes": {},
+    "TrailWaypointFeedback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["comments", "votes"],
+      "properties": {
+        "comments": {
+          "type": "array",
+          "items": {
+            "$ref": "common.json#/definitions/Comment"
+          }
+        },
+        "votes": {
+          "type": "array",
+          "items": {
+            "$ref": "common.json#/definitions/FeedbackVote"
+          }
+        }
+      }
+    }
+  }
+}
