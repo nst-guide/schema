@@ -75,7 +75,7 @@
     "GeoPoint": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["latitude", "longitude"],
+      "required": ["__type", "latitude", "longitude"],
       "properties": {
         "__type": {
           "type": "string",
