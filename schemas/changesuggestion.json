@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "changesuggestion.json",
+  "type": "object",
+  "additionalProperties": false,
+  "title": "ChangeSuggestion schema",
+  "required": ["id", "desc", "pointer", "type"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier"
+    },
+    "desc": {
+      "type": "string",
+      "description": "description for why object should be changed"
+    },
+    "pointer": {
+      "description": "pointer to changed object",
+      "$ref": "common.json#/definitions/ParsePointer"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["add", "modify", "delete"]
+    },
+    "suggestedGeometry": {
+      "description": "suggested new geometry of feature",
+      "$ref": "common.json#/definitions/ParseFile"
+    }
+  }
+}
