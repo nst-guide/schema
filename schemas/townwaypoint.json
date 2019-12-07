@@ -127,6 +127,9 @@
         "addr:state": {
           "type": "string"
         },
+        "addr:postcode": {
+          "type": "string"
+        },
         "amenity": {
           "type": "string"
         },
