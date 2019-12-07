@@ -18,12 +18,44 @@
     "addr:street": "West Tehachapi Boulevard",
     "addr:city": "Tehachapi",
     "addr:state": "CA",
+    "addr:postcode": "93561",
     "internet_access": true
   },
   "attrs": {
     "wifi": true,
     "power": true,
-    "shower": true
+    "shower": true,
+    "laundry": true,
+    "acceptsResupply": true,
+    "acceptsResupplyProvider": { "ups": true, "usps": true, "fedex": false },
+    "acceptsResupplyAddress": [
+      {
+        "provider": { "ups": true },
+        "address": {
+          "housenumber": "418",
+          "street": "West Tehachapi Boulevard",
+          "city": "Tehachapi",
+          "state": "CA",
+          "postcode": "93561"
+        }
+      },
+      {
+        "provider": { "usps": true, "ups": false },
+        "address": {
+          "housenumber": "P.O. Box 1234",
+          "city": "Tehachapi",
+          "state": "CA",
+          "postcode": "93561"
+        }
+      }
+    ],
+    "sendsResupply": true,
+    "sendsResupplyFee": "$5",
+    "sendsResupplyProvider": {
+      "ups": true,
+      "usps": true,
+      "fedex": false
+    }
   },
   "feedback": {
     "comments": [

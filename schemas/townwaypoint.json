@@ -179,7 +179,9 @@
           "type": "boolean"
         },
         "phone": {
-          "type": "string"
+          "description": "telephone number of establishment. The OSM telephone key doesn't have a regex restriction because I want to keep whatever data OSM has, but this has a restriction because I should force manually added data to be ten digits.",
+          "type": "string",
+          "pattern": "^(\\+1)?\\d{10}$"
         },
         "website": {
           "type": "string"
@@ -222,6 +224,9 @@
         },
         "sendsResupply": {
           "type": "boolean"
+        },
+        "sendsResupplyFee": {
+          "type": "string"
         },
         "sendsResupplyProvider": {
           "$ref": "#/definitions/ResupplyProvider"

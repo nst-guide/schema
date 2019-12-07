@@ -25,7 +25,8 @@
           "type": "string"
         },
         "state": {
-          "type": "string"
+          "type": "string",
+          "pattern": "^(CA|OR|WA)$"
         }
       }
     },
