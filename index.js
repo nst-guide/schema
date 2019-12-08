@@ -1,6 +1,15 @@
 const Ajv = require('ajv');
 
-const schemaNames = ['town', 'townwaypoint', 'common'];
+const schemaNames = [
+  'changesuggestion',
+  'common',
+  'town',
+  'townwaypoint',
+  'trail',
+  'trailsection',
+  'trailwaypoint',
+  'user',
+];
 
 function loadSchemas() {
   let ajv = new Ajv();
