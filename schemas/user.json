@@ -4,7 +4,14 @@
   "type": "object",
   "additionalProperties": false,
   "title": "User schema",
-  "required": ["email", "locationHistory", "password", "units", "userName"],
+  "required": [
+    "email",
+    "locationHistory",
+    "password",
+    "starredWaypoints",
+    "units",
+    "userName"
+  ],
   "properties": {
     "avatar": {
       "$ref": "common.json#/definitions/ParseFile"
@@ -53,6 +60,26 @@
         },
         "reddit": {
           "type": "string"
+        }
+      }
+    },
+    "starredWaypoints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type", "waypoint"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["star"]
+          },
+          "waypoint": {
+            "oneOf": [
+              { "$ref": "common.json#/definitions/ParsePointerTrailWaypoint" },
+              { "$ref": "common.json#/definitions/ParsePointerTownWaypoint" }
+            ]
+          }
         }
       }
     },

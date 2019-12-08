@@ -149,6 +149,24 @@
         }
       }
     },
+    "ParsePointerTownWaypoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["__type", "className", "objectId"],
+      "properties": {
+        "__type": {
+          "type": "string",
+          "enum": ["Pointer"]
+        },
+        "className": {
+          "type": "string",
+          "enum": ["TownWaypoint"]
+        },
+        "objectId": {
+          "type": "string"
+        }
+      }
+    },
     "ParsePointerTrail": {
       "type": "object",
       "additionalProperties": false,
@@ -179,6 +197,24 @@
         "className": {
           "type": "string",
           "enum": ["TrailSection"]
+        },
+        "objectId": {
+          "type": "string"
+        }
+      }
+    },
+    "ParsePointerTrailWaypoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["__type", "className", "objectId"],
+      "properties": {
+        "__type": {
+          "type": "string",
+          "enum": ["Pointer"]
+        },
+        "className": {
+          "type": "string",
+          "enum": ["TrailWaypoint"]
         },
         "objectId": {
           "type": "string"
