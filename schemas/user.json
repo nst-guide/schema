@@ -56,6 +56,26 @@
       "type": "string",
       "minLength": 8
     },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "shareWithLandAgencies",
+        "shareWithNonProfits",
+        "storeLocationHistory"
+      ],
+      "properties": {
+        "shareWithLandAgencies": {
+          "type": "boolean"
+        },
+        "shareWithNonProfits": {
+          "type": "boolean"
+        },
+        "storeLocationHistory": {
+          "type": "boolean"
+        }
+      }
+    },
     "social": {
       "type": "object",
       "additionalProperties": false,
