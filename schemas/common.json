@@ -99,7 +99,7 @@
         "name": {
           "type": "string",
           "description": "The name of the uploaded file in Parse.",
-          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}-"
+          "pattern": "^[0-9a-f]{32}"
         },
         "url": {
           "type": "string",

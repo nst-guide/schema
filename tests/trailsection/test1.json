@@ -1,0 +1,18 @@
+{
+  "id": "ca_a",
+  "name": "CA Section A",
+  "trails": [
+    {
+      "__type": "Pointer",
+      "className": "Trail",
+      "objectId": "QFVciFcoWv"
+    }
+  ],
+  "length": 109.5,
+  "alternate": "no",
+  "geometry": {
+    "__type": "File",
+    "name": "cf4aae59ff2f9679baa1efc31424da70_index.html",
+    "url": "https://parse-files-nst-guide.s3.amazonaws.com/parse-files/cf4aae59ff2f9679baa1efc31424da70_index.html"
+  }
+}

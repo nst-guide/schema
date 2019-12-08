@@ -21,7 +21,6 @@
     "trails": {
       "type": "array",
       "items": {
-        "type": "string",
         "$ref": "common.json#/definitions/ParsePointerTrail"
       }
     },
