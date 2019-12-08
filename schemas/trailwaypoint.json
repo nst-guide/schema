@@ -7,12 +7,12 @@
   "required": [
     "attrs",
     "feedback",
-    "geopoint",
+    "point",
     "id",
     "osm",
     "photos",
     "subtype",
-    "trailSections",
+    "trailLocations",
     "type"
   ],
   "properties": {
@@ -34,7 +34,7 @@
     "subtype": {
       "$ref": "#/definitions/TrailWaypointSubtype"
     },
-    "geopoint": {
+    "point": {
       "description": "Point location of waypoint",
       "$ref": "common.json#/definitions/ParseGeoPoint"
     },
@@ -47,10 +47,10 @@
     "feedback": {
       "$ref": "#/definitions/TrailWaypointFeedback"
     },
-    "trailSections": {
+    "trailLocations": {
       "type": "array",
       "items": {
-        "$ref": "common.json#/definitions/ParsePointerTrailSection"
+        "$ref": "common.json#/definitions/TrailLocation"
       }
     },
     "subWaypoints": {

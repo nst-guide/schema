@@ -9,7 +9,7 @@
     "name",
     "type",
     "centroid",
-    "trails",
+    "trailLocations",
     "feedback",
     "elevation"
   ],
@@ -31,23 +31,10 @@
     "geometry": {
       "$ref": "common.json#/definitions/ParseFile"
     },
-    "trails": {
+    "trailLocations": {
       "type": "array",
       "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": ["mileMarker", "trail"],
-        "properties": {
-          "mileMarker": {
-            "description": "used for ordering towns along a trail",
-            "type": "number",
-            "minimum": 0,
-            "maximum": 5000
-          },
-          "trail": {
-            "$ref": "common.json#/definitions/ParsePointerTrail"
-          }
-        }
+        "$ref": "common.json#/definitions/TrailLocation"
       }
     },
     "feedback": {

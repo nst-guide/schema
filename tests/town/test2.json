@@ -7,14 +7,31 @@
     "latitude": 39.3286,
     "longitude": -120.18304
   },
-  "trails": [
+  "trailLocations": [
     {
-      "mileMarker": 123,
+      "point": {
+        "__type": "GeoPoint",
+        "latitude": 39.316727,
+        "longitude": -120.326231
+      },
+      "trailMile": 1157,
       "trail": {
         "__type": "Pointer",
         "className": "Trail",
         "objectId": "pct"
-      }
+      },
+      "trailSections": [
+        {
+          "__type": "Pointer",
+          "className": "TrailSection",
+          "objectId": "k"
+        },
+        {
+          "__type": "Pointer",
+          "className": "TrailSection",
+          "objectId": "l"
+        }
+      ]
     }
   ],
   "feedback": [
