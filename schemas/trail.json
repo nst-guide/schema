@@ -20,22 +20,10 @@
       "description": "longer description of trail"
     },
     "length": {
-      "type": "object",
-      "description": "length of trail",
-      "additionalProperties": false,
-      "required": ["miles"],
-      "properties": {
-        "miles": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 5000
-        },
-        "kilometers": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 8000
-        }
-      }
+      "description": "length of trail in kilometers",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 8000
     },
     "trailSections": {
       "type": "array",

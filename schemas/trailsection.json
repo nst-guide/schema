@@ -4,7 +4,7 @@
   "type": "object",
   "additionalProperties": false,
   "title": "TrailSection schema",
-  "required": ["id", "name", "trails", "alternate", "geometry"],
+  "required": ["id", "name", "trails", "length", "alternate", "geometry"],
   "properties": {
     "id": {
       "type": "string",
@@ -25,21 +25,10 @@
       }
     },
     "length": {
-      "type": "object",
-      "description": "length of trail section",
-      "additionalProperties": false,
-      "properties": {
-        "miles": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 5000
-        },
-        "kilometers": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 8000
-        }
-      }
+      "description": "length of trail section in kilometers",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 8000
     },
     "alternate": {
       "type": "string",

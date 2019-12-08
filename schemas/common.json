@@ -246,19 +246,13 @@
     "TrailLocation": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["point", "trailMile", "trail", "trailSections"],
+      "required": ["point", "trailKm", "trail", "trailSections"],
       "properties": {
         "point": {
           "$ref": "#/definitions/ParseGeoPoint"
         },
-        "trailMile": {
-          "description": "Mile marker in standard direction along non-alternate trail. Used for ordering",
-          "type": "number",
-          "minimum": 0,
-          "maximum": 5000
-        },
-        "trailSectionMile": {
-          "description": "Mile marker in standard direction along non-alternate trail. Used for ordering",
+        "trailKm": {
+          "description": "Kilometers in standard direction along non-alternate trail. Used for ordering",
           "type": "number",
           "minimum": 0,
           "maximum": 5000

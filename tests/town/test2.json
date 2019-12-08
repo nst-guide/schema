@@ -14,7 +14,7 @@
         "latitude": 39.316727,
         "longitude": -120.326231
       },
-      "trailMile": 1157,
+      "trailKm": 1851,
       "trail": {
         "__type": "Pointer",
         "className": "Trail",
