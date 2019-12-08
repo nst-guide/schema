@@ -1,0 +1,10 @@
+{
+  "trailCode": "pct",
+  "name": "Pacific Crest Trail",
+  "desc": "Description of PCT",
+  "length": {
+    "miles": 2650,
+    "kilometers": 4265
+  },
+  "trailSections": ["ca_a"]
+}
