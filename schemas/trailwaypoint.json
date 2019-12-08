@@ -5,14 +5,15 @@
   "additionalProperties": false,
   "title": "TrailWaypoint schema",
   "required": [
-    "id",
-    "type",
-    "subtype",
-    "geopoint",
-    "osm",
     "attrs",
     "feedback",
-    "trailSections"
+    "geopoint",
+    "id",
+    "osm",
+    "photos",
+    "subtype",
+    "trailSections",
+    "type"
   ],
   "properties": {
     "id": {
@@ -56,6 +57,12 @@
       "type": "array",
       "items": {
         "$ref": "#/definitions/subWaypoints"
+      }
+    },
+    "photos": {
+      "type": "array",
+      "items": {
+        "$ref": "common.json#/definitions/ParseFile"
       }
     }
   },

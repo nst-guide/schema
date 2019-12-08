@@ -5,15 +5,15 @@
   "additionalProperties": false,
   "title": "TownWaypoint schema",
   "required": [
-    "id",
-    "townId",
-    "name",
-    "type",
-    "subtype",
-    "geopoint",
     "attrs",
     "feedback",
-    "photos"
+    "geopoint",
+    "id",
+    "name",
+    "photos",
+    "subtype",
+    "townId",
+    "type"
   ],
   "properties": {
     "id": {
