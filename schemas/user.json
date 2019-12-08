@@ -4,33 +4,36 @@
   "type": "object",
   "additionalProperties": false,
   "title": "User schema",
-  "required": ["userName", "email", "password", "units", "locationHistory"],
+  "required": ["email", "locationHistory", "password", "units", "userName"],
   "properties": {
-    "userName": {
-      "$ref": "common.json#/definitions/userName"
+    "avatar": {
+      "$ref": "common.json#/definitions/ParseFile"
     },
     "email": {
       "type": "string",
       "format": "email"
     },
+    "locationHistory": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["date", "location"],
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "location": {
+            "$ref": "common.json#/definitions/ParseGeoPoint"
+          }
+        }
+      }
+    },
     "password": {
       "description": "password, minimum length of 8 characters",
       "type": "string",
       "minLength": 8
-    },
-    "units": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "distance": {
-          "type": "string",
-          "enum": ["metric", "imperial", "both"]
-        },
-        "temperature": {
-          "type": "string",
-          "enum": ["metric", "imperial", "both"]
-        }
-      }
     },
     "social": {
       "type": "object",
@@ -53,25 +56,22 @@
         }
       }
     },
-    "locationHistory": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": ["date", "location"],
-        "properties": {
-          "date": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "location": {
-            "$ref": "common.json#/definitions/ParseGeoPoint"
-          }
+    "units": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "distance": {
+          "type": "string",
+          "enum": ["metric", "imperial", "both"]
+        },
+        "temperature": {
+          "type": "string",
+          "enum": ["metric", "imperial", "both"]
         }
       }
     },
-    "avatar": {
-      "$ref": "common.json#/definitions/ParseFile"
+    "userName": {
+      "$ref": "common.json#/definitions/userName"
     }
   }
 }
