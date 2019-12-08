@@ -25,14 +25,28 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["date", "location"],
+        "oneOf": [
+          { "required": ["date", "location", "selfReported"] },
+          { "required": ["date", "town", "selfReported"] },
+          { "required": ["date", "trailWaypoint", "selfReported"] }
+        ],
         "properties": {
           "date": {
             "type": "string",
             "format": "date-time"
           },
-          "location": {
+          "point": {
             "$ref": "common.json#/definitions/ParseGeoPoint"
+          },
+          "selfReported": {
+            "description": "whether self-reported (e.g. through a log feature)",
+            "type": "boolean"
+          },
+          "town": {
+            "$ref": "common.json#/definitions/ParsePointerTown"
+          },
+          "trailWaypoint": {
+            "$ref": "common.json#/definitions/ParsePointerTrailWaypoint"
           }
         }
       }

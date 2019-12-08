@@ -107,7 +107,7 @@
     "TownWaypointOSM": {
       "type": "object",
       "additionalProperties": false,
-      "anyOf": [
+      "oneOf": [
         { "required": ["nodeId"] },
         { "required": ["wayId"] },
         { "required": ["relationId"] }
