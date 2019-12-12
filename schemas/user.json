@@ -65,6 +65,11 @@
         "storeLocationHistory"
       ],
       "properties": {
+        "collectionLevel": {
+          "type": "string",
+          "description": "none means no location data leaves the device. anonymous means location data separated from the user identity can be stored. identified means location history can be joined with the user identity.",
+          "enum": ["none", "anonymous", "identified"]
+        },
         "shareWithLandAgencies": {
           "type": "boolean"
         },
